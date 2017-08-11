@@ -42,8 +42,10 @@ class Matches extends React.Component {
             .then((response) => {
                 return response.json()
             }).then((data: GetMatchesApiResponseModel) => {
-                console.log(data.rounds[0].matches)
-                this.props.appStore.setMatches(data.rounds[0].matches)
+                console.log('dccc')
+                console.log(data.rounds)
+                // this.props.appStore.setMatches(data.rounds[0].matches)
+                this.props.appStore.setRounds(data.rounds)
             }).catch((ex) => {
                 console.log('parsing failed', ex)
             })
@@ -52,17 +54,27 @@ class Matches extends React.Component {
     render() {
         return (
             <div>
-                gethe
                 <ul>
-                    {this.props.appStore.matches.map((match, i) => {
+                    {this.props.appStore.rounds.map((round) => {
                         return (
-                            <li className={styles.item} key={match.date + match.team1.key + match.team2.key}>
-                                {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br/>
-                                Date: {match.date}
+                            <li className={styles.round} key={round.name}>
+                                {round.name}
+                                <ul>
+                                    {round.matches.map((match) => {
+                                        return (
+                                            <li className={styles.match} key={match.date + match.team1.key + match.team2.key}>
+                                                {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br />
+                                                Date: {match.date}
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
                             </li>
                         )
                     })}
                 </ul>
+
+
             </div>
         )
     }

@@ -4,8 +4,13 @@ $item-margin: 20px;
     margin-left: -($item-margin / 2);
 }
 
-.item {
+.round {
+    margin: 20px;
+}
+
+.match {
     // width: 300px;
-    display: inline-block;
-    margin: 0 0 $item-margin $item-margin;
+    display: block;
+    margin: 10px;
+    border: 1px solid #ccc;
 }

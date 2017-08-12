@@ -1,14 +1,18 @@
 import * as React from 'react'
-import Matches from '../matches/matches';
-import './app.scss'
 import { AppStore } from './AppStore';
+import { Nav } from "../nav/nav";
+import { Matches } from "../matches/matches";
+const styles = require('./app.scss');
 
 const appStore = new AppStore();
 
 const App = () => {
     return (
         <div>
-            <Matches appStore={appStore} />
+            <Nav></Nav>
+            <div className={styles.container}>
+                <Matches appStore={appStore} />
+            </div>
         </div>
     )
 };

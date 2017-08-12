@@ -1,16 +1,40 @@
+@import "../shared/variables.scss";
+
 $item-margin: 20px;
 
-.list {
-    margin-left: -($item-margin / 2);
+.leagueTitle {
+    font-size: 20px;
+    margin: 0 0 10px 0;
 }
 
 .round {
-    margin: 20px;
+    padding: 20px;
+    background: $body-bg-alternate;
+    margin-bottom: 20px;
+}
+
+.roundTitle {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: normal;
 }
 
 .match {
     // width: 300px;
     display: block;
-    margin: 10px;
-    border: 1px solid #ccc;
+    padding: 5px 0;
+    border-top: 1px solid #131417;
+    border-bottom: 1px solid #303033;
+
+    &:first-child {
+        border-top-color: transparent;
+    }
+
+    &:last-child {
+        border-bottom-color: transparent;
+    }
+}
+
+.info {
+    font-size: 12px;
 }

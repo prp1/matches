@@ -20,5 +20,5 @@ export interface Round {
 export interface GetMatchesApiResponseModel {
     name: string;
     rounds: Round[];
-    totalItems: number;
+    totalCount: number;
 }

@@ -5,13 +5,13 @@ import { Match } from "../Item/item.interfaces";
 export class AppStore {
 
     @observable
-    public matches: Match[] = [];
+    public league: string = '';
 
     @observable
     public rounds: Round[] = [];
 
-    public setMatches = (matches: Match[]) => {
-        this.matches = matches;
+    public setLeague = (league: string) => {
+        this.league = league;
     }
 
     public setRounds = (rounds: Round[]) => {

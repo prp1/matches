@@ -1,19 +1,16 @@
 const express = require('express');
-const cachedItems = require('../data/matches.json');
-
 const browseRouter = express.Router();
+const data = require('../data/matches.json');
+data.rounds.reverse();
 
-const getItems = function (payload) {
-    // const start = Number.parseInt(payload.start) || 0;
-    // const limit = Number.parseInt(payload.limit) || 9;
-    // const items = cachedItems.slice(start, start + limit);
-
-    // return {
-    //     items: items,
-    //     totalItems: cachedItems.length
-    // };
-
-    return cachedItems;
+const getItems = (payload) => {
+    const offset = Number.parseInt(payload.offset) || 0;
+    const limit = Number.parseInt(payload.limit) || 5;
+    return {
+        name: data.name,
+        totalCount: data.length,
+        rounds: data.rounds.slice(offset, offset + limit),
+    };
 };
 
 browseRouter.get('', (req, res) => {

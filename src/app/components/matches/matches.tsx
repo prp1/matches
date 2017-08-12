@@ -3,7 +3,7 @@ import * as React from 'react'
 const styles = require('./matches.scss');
 import { AppStore } from '../app/appStore'
 // import { matchesHoc } from '../matchesHoc/matchesHoc'
-import { Match, GetMatchesApiResponseModel } from "../Item/item.interfaces";
+import { Match, GetRoundsApiResponseModel } from "../Item/item.interfaces";
 import { observer } from "mobx-react";
 import { heart } from "../icon/icons";
 import { Icon } from "../icon/icon";
@@ -18,16 +18,7 @@ export class Matches extends React.Component {
     }
 
     componentDidMount(): void {
-        fetch('/data')
-            .then((response) => {
-                return response.json()
-            }).then((data: GetMatchesApiResponseModel) => {
-                this.props.appStore.setLeague(data.name)
-                this.props.appStore.setRounds(data.rounds)
-            }).catch((ex) => {
-                console.log('parsing failed', ex)
-            });
-
+        this.props.appStore.loadRounds();
         this.props.appStore.loadFavoriteMatches();
     }
 

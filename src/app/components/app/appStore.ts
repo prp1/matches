@@ -1,5 +1,6 @@
+import { apiHelper } from './../shared/api.helper';
 import { getMatchKey } from './../matches/matches.helper';
-import { Round } from './../Item/item.interfaces';
+import { Round, GetRoundsApiResponseModel } from './../Item/item.interfaces';
 import { observable, computed, action, useStrict } from 'mobx';
 import { Match } from "../Item/item.interfaces";
 
@@ -31,16 +32,6 @@ export class AppStore {
     }
 
     @action
-    public setLeague = (league: string) => {
-        this._league = league;
-    }
-
-    @action
-    public setRounds = (rounds: Round[]) => {
-        this._rounds = rounds;
-    }
-
-    @action
     public toggleMatchFavoriteStatus(match: Match): void {
         const key = getMatchKey(match);
 
@@ -55,6 +46,15 @@ export class AppStore {
         }
 
         localStorage.setItem('favoriteMatches', JSON.stringify(this._favoriteMatches));
+    }
+
+    @action
+    public loadRounds(): void {
+        apiHelper.get('/rounds')
+            .then(action((data: GetRoundsApiResponseModel) => {
+                this._rounds = data.rounds;
+                this._league = data.name;
+            }));
     }
 
     @action

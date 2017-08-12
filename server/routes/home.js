@@ -18,7 +18,7 @@ browseRouter.get('', (req, res) => {
     res.render('home', response);
 });
 
-browseRouter.get('/data', (req, res)=>{
+browseRouter.get('/rounds', (req, res)=>{
     const response = getItems(req.query);
     res.status(200).json(response);
 });

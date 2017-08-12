@@ -17,7 +17,7 @@ export interface Round {
     matches: Match[];
 }
 
-export interface GetMatchesApiResponseModel {
+export interface GetRoundsApiResponseModel {
     name: string;
     rounds: Round[];
     totalCount: number;

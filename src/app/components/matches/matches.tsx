@@ -5,6 +5,10 @@ import { AppStore } from '../app/appStore'
 // import { matchesHoc } from '../matchesHoc/matchesHoc'
 import { Match, GetMatchesApiResponseModel } from "../Item/item.interfaces";
 import { observer } from "mobx-react";
+import { heart } from "../icon/icons";
+import { Icon } from "../icon/icon";
+import { getMatchKey } from "./matches.helper";
+import { Favorite } from "../favorite/favorite";
 
 @observer
 export class Matches extends React.Component {
@@ -22,25 +26,34 @@ export class Matches extends React.Component {
                 this.props.appStore.setRounds(data.rounds)
             }).catch((ex) => {
                 console.log('parsing failed', ex)
-            })
+            });
+
+        this.props.appStore.loadFavoriteMatches();
     }
 
     render() {
+        const appStore = this.props.appStore;
+
         return (
             <div>
-                <h1 className={styles.leagueTitle}>{this.props.appStore.league}</h1>
+                <h1 className={styles.leagueTitle}>{appStore.league}</h1>
 
                 <ul>
-                    {this.props.appStore.rounds.map((round) => {
+                    {appStore.rounds.map((round) => {
                         return (
                             <li className={styles.round} key={round.name}>
                                 <h2 className={styles.roundTitle}>{round.name}</h2>
                                 <ul>
                                     {round.matches.map((match) => {
                                         return (
-                                            <li className={styles.match} key={match.date + match.team1.key + match.team2.key}>
-                                                {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br />
-                                                <div className={styles.info}>{match.date}</div>
+                                            <li className={styles.match} key={getMatchKey(match)}>
+                                                <div className={styles.left}>
+                                                    {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br />
+                                                    <div className={styles.info}>{match.date}</div>
+                                                </div>
+                                                <div className={styles.right}>
+                                                    <Favorite appStore={appStore} match={match}></Favorite>
+                                                </div>
                                             </li>
                                         )
                                     })}

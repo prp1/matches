@@ -25,6 +25,7 @@ $item-margin: 20px;
     padding: 5px 0;
     border-top: 1px solid #131417;
     border-bottom: 1px solid #303033;
+    overflow: hidden;
 
     &:first-child {
         border-top-color: transparent;
@@ -33,6 +34,14 @@ $item-margin: 20px;
     &:last-child {
         border-bottom-color: transparent;
     }
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
 }
 
 .info {

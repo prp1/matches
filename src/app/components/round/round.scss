@@ -1,0 +1,13 @@
+@import "../shared/variables.scss";
+
+.round {
+    padding: 5px 20px;
+    background: $body-bg-alternate;
+    margin-bottom: 20px;
+}
+
+.roundTitle {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: normal;
+}

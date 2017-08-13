@@ -1,21 +1,6 @@
 @import "../shared/variables.scss";
 
-$item-margin: 20px;
-
-.round {
-    padding: 5px 20px;
-    background: $body-bg-alternate;
-    margin-bottom: 20px;
-}
-
-.roundTitle {
-    margin: 0 0 10px 0;
-    font-size: 18px;
-    font-weight: normal;
-}
-
 .match {
-    // width: 300px;
     display: block;
     padding: 10px 0;
     border-top: 1px solid #131417;

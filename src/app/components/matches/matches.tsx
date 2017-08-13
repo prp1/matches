@@ -1,12 +1,7 @@
 import * as React from 'react'
-const styles = require('./matches.scss');
 import { AppStore } from '../app/appStore'
-import { Match, GetRoundsApiResponseModel } from "../Item/item.interfaces";
 import { observer } from "mobx-react";
-import { heart } from "../icon/icons";
-import { Icon } from "../icon/icon";
-import { getMatchKey } from "./matches.helper";
-import { Favorite } from "../favorite/favorite";
+import { RoundComponent } from "../round/round";
 const InfiniteScroll = require("react-infinite-scroller");
 
 @observer
@@ -36,24 +31,7 @@ export class Matches extends React.Component {
                 <ul>
                     {appStore.rounds.map((round) => {
                         return (
-                            <li key={round.name}>
-                                <h2 className={styles.roundTitle}>{round.name}</h2>
-                                <ul className={styles.round}>
-                                    {round.matches.map((match) => {
-                                        return (
-                                            <li className={styles.match} key={getMatchKey(match)}>
-                                                <div className={styles.left}>
-                                                    {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br />
-                                                    <div className={styles.info}>{match.date}</div>
-                                                </div>
-                                                <div className={styles.right}>
-                                                    <Favorite appStore={appStore} match={match}></Favorite>
-                                                </div>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </li>
+                            <RoundComponent round={round} appStore={appStore}></RoundComponent>
                         )
                     })}
                 </ul>

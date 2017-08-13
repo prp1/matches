@@ -1,29 +1,24 @@
-const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
     context: __dirname,
-    // devtool: 'cheap-module-eval-source-map',
     devtool: 'source-map',
     entry: {
         app: './src/app/entries/app.tsx',
-        // TODO: review if needed
-        fetch: 'whatwg-fetch'
+        fetch: 'whatwg-fetch',
+        promise: 'es6-promise',
     },
     output: {
-        // path: path.join(__dirname, '..'),
         path: __dirname + "/dist",
         publicPath: '/bundle/',
-        // TODO: add hash
         filename: '[name].js'
     },
     resolve: {
-        // root: path.resolve(__dirname + '/../src/app'),
         extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
     ],
     module: {
         rules: [
@@ -57,8 +52,4 @@ module.exports = {
         ]
     },
     stats: { colors: true },
-    // externals: {
-    //     "react": "React",
-    //     "react-dom": "ReactDOM"
-    // },
 };

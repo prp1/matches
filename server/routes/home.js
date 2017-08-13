@@ -8,7 +8,7 @@ const getItems = (payload) => {
     const limit = Number.parseInt(payload.limit) || 5;
     return {
         name: data.name,
-        totalCount: data.length,
+        totalCount: data.rounds.length,
         rounds: data.rounds.slice(offset, offset + limit),
     };
 };

@@ -18,11 +18,22 @@ export class AppStore {
         return this._rounds;
     }
 
+    @computed
+    public get hasMoreRounds(): boolean {
+        return this._hasMoreRounds;
+    }
+
     @observable
     private _league: string = '';
 
     @observable
     private _rounds: Round[] = [];
+
+    @observable
+    private _roundsOffset: number = 0;
+
+    @observable
+    private _hasMoreRounds: boolean = true;
 
     @observable
     private _favoriteMatches: string[] = [];
@@ -50,10 +61,15 @@ export class AppStore {
 
     @action
     public loadRounds(): void {
-        apiHelper.get('/rounds')
+        const limit = 5;
+        const offset = this._roundsOffset;
+
+        apiHelper.get(`/rounds?offset=${offset}&limit=${limit}`)
             .then(action((data: GetRoundsApiResponseModel) => {
-                this._rounds = data.rounds;
+                this._rounds = this._rounds.concat(data.rounds);
                 this._league = data.name;
+                this._roundsOffset += limit;
+                this._hasMoreRounds = this._roundsOffset < data.totalCount;
             }));
     }
 

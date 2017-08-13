@@ -1,8 +1,6 @@
-@import "../shared/variables.scss";
-
 :global(.body) {
     margin: 0;
-    background: $body-bg;
+    background: #000;
     box-sizing: border-box;
     color: #fff;
     font-family: Open Sans,sans-serif;

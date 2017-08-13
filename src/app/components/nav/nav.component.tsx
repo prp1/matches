@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { NavComponentProps } from "./nav.interfaces";
 import { observer } from "mobx-react";
-const styles = require('./nav.scss');
+const styles = require('./nav.styles.scss');
 
-export const Nav = observer((props: NavComponentProps) => {
+export const NavComponent = observer((props: NavComponentProps) => {
 
     return (
         <nav className={styles.nav}>

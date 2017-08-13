@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { FavoriteComponentProps } from "./favorite.interfaces";
-import { Icon } from "../icon/icon";
-import { heart } from "../icon/icons";
 import { observer } from "mobx-react";
-const styles = require('./favorite.scss');
+import { IconComponent } from "../../icon/icon.component";
+import { heart } from "../../icon/icon.constants";
+const styles = require('./favorite.styles.scss');
 
-export const Favorite = observer((props: FavoriteComponentProps) => {
+export const FavoriteComponent = observer((props: FavoriteComponentProps) => {
     const { appStore, match } = props;
     const isFavorite = appStore.isMatchFavorite
 
@@ -23,7 +23,7 @@ export const Favorite = observer((props: FavoriteComponentProps) => {
     return (
         <div>
             <a href="#" className={styles.anchor} onClick={onClick}>
-                <Icon path={heart} fill={getColor()}></Icon>
+                <IconComponent path={heart} fill={getColor()}></IconComponent>
             </a>
         </div>
     );

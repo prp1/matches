@@ -1,5 +1,5 @@
 
-export const apiHelper = {
+export const apiService = {
 
     get: (endpoint: string): Promise<any> => {
         return fetch(endpoint)

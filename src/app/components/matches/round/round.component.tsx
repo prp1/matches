@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { AppStore } from '../app/appStore'
 import { observer } from "mobx-react";
 import { RoundComponentProps } from "./round.interfaces";
-import { MatchComponent } from "../match/match";
-const styles = require('./round.scss');
+import { MatchComponent } from "../match/match.component";
+const styles = require('./round.styles.scss');
 
 export const RoundComponent = observer((props: RoundComponentProps) => {
 

@@ -1,15 +1,13 @@
 import * as React from 'react'
-import { AppStore } from '../app/appStore'
 import { observer } from "mobx-react";
-import { RoundComponent } from "../round/round";
+import { MatchesListComponentProps } from "./matches-list.interfaces";
+import { RoundComponent } from "../round/round.component";
 const InfiniteScroll = require("react-infinite-scroller");
 
 @observer
-export class Matches extends React.Component {
+export class MatchesListComponent extends React.Component {
 
-    public props: {
-        appStore: AppStore;
-    }
+    public props: MatchesListComponentProps;
 
     componentDidMount(): void {
         this.props.appStore.loadFavoriteMatches();

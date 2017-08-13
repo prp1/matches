@@ -11,7 +11,7 @@ export class AppStore {
     @computed
     public get league(): string {
         return this._league;
-    };
+    }
 
     @computed
     public get rounds(): Round[] {
@@ -38,7 +38,7 @@ export class AppStore {
     @observable
     private _favoriteMatches: string[] = [];
 
-    isMatchFavorite(match: Match): boolean {
+    public isMatchFavorite(match: Match): boolean {
         const key = matchesService.getMatchKey(match);
         return this._favoriteMatches.indexOf(key) > -1;
     }

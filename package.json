@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "cleaninstall": "rm -rf ./node_modules && npm cache clean && npm install",
-    "dev": "node server/index.js"
+    "dev": "node server/index.js",
+    "lint": "npm run tslint \"src/**/*.ts\"",
+    "tslint": "tslint"
   },
   "author": "prp1",
   "dependencies": {
@@ -32,6 +34,7 @@
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
+    "tslint": "^5.6.0",
     "typescript": "^2.4.2",
     "webpack": "^2.7",
     "webpack-dev-middleware": "^1.12"

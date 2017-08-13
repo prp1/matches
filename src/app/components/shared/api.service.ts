@@ -6,6 +6,6 @@ export const apiService = {
             .then((response) => {
                 return response.json();
             });
-    }
+        },
 
 };

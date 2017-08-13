@@ -6,7 +6,7 @@ module.exports = {
     // devtool: 'cheap-module-eval-source-map',
     devtool: 'source-map',
     entry: {
-        browse: './src/app/entries/home.tsx',
+        app: './src/app/entries/app.tsx',
         // TODO: review if needed
         fetch: 'whatwg-fetch'
     },

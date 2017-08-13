@@ -1,9 +1,16 @@
+.roundName {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
 .match {
     display: block;
-    padding: 10px 0;
     border-top: 1px solid #131417;
     border-bottom: 1px solid #303033;
     overflow: hidden;
+    padding: 10px 20px;
+    background: #222326;
 
     &:first-child {
         border-top-color: transparent;
@@ -12,6 +19,10 @@
     &:last-child {
         border-bottom-color: transparent;
     }
+}
+
+.matchFirstOfRound {
+    margin-top: 20px;
 }
 
 .left {

@@ -3,5 +3,6 @@ import { Match } from './../shared/matches.interfaces';
 
 export interface MatchComponentProps {
     match: Match;
+    previousMatchRoundName: string;
     appStore: AppStore;
 }

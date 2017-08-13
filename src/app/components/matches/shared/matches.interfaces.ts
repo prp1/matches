@@ -4,6 +4,7 @@ export interface Match {
     score2: 0;
     team1: Team;
     team2: Team;
+    roundName: string;
 }
 
 export interface Team {
@@ -12,13 +13,12 @@ export interface Team {
     name: string;
 }
 
-export interface Round {
+export interface GetMatchesApiResponseModel {
     name: string;
     matches: Match[];
+    totalCount: number;
 }
 
-export interface GetRoundsApiResponseModel {
-    name: string;
-    rounds: Round[];
-    totalCount: number;
+export interface GetTeamsApiResponseModel {
+    teams: Team[];
 }

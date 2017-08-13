@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { IconComponentProps } from "./icon.interfaces";
+import * as React from 'react';
+import { IconComponentProps } from './icon.interfaces';
 
 export const IconComponent = (props: IconComponentProps) => (
     <svg

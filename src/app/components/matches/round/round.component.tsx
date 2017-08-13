@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { observer } from "mobx-react";
-import { RoundComponentProps } from "./round.interfaces";
-import { MatchComponent } from "../match/match.component";
+import * as React from 'react';
+import { observer } from 'mobx-react';
+import { RoundComponentProps } from './round.interfaces';
+import { MatchComponent } from '../match/match.component';
 const styles = require('./round.styles.scss');
 
 export const RoundComponent = observer((props: RoundComponentProps) => {
@@ -14,9 +14,9 @@ export const RoundComponent = observer((props: RoundComponentProps) => {
             <h2 className={styles.roundTitle}>{round.name}</h2>
             <ul className={styles.round}>
                 {round.matches.map((match) => {
-                    return <MatchComponent match={match} appStore={appStore}></MatchComponent>
+                    return <MatchComponent match={match} appStore={appStore}></MatchComponent>;
                 })}
             </ul>
         </li>
-    )
+);
 });

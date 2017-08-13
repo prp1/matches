@@ -27,6 +27,7 @@
         "no-var-requires": false,
         "only-arrow-functions": [true, "allow-declarations"],
         "object-literal-key-quotes": [true, "as-needed"],
+        "quotemark": [true, "single", "jsx-double"],
         "typedef": [
             true,
             "call-signature",
@@ -140,7 +141,6 @@
         ],
         "variable-name": [
             true,
-            "check-format",
             "ban-keywords",
             "allow-leading-underscore"
         ],

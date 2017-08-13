@@ -1,23 +1,23 @@
-import * as React from 'react'
-import { observer } from "mobx-react";
-import { MatchesListComponentProps } from "./matches-list.interfaces";
-import { RoundComponent } from "../round/round.component";
-const InfiniteScroll = require("react-infinite-scroller");
+import * as React from 'react';
+import { observer } from 'mobx-react';
+import { MatchesListComponentProps } from './matches-list.interfaces';
+import { RoundComponent } from '../round/round.component';
+const InfiniteScroll = require('react-infinite-scroller');
 
 @observer
 export class MatchesListComponent extends React.Component {
 
     public props: MatchesListComponentProps;
 
-    componentDidMount(): void {
+    public componentDidMount(): void {
         this.props.appStore.loadFavoriteMatches();
     }
 
-    loadMoreRounds = (): void => {
+    public loadMoreRounds = (): void => {
         this.props.appStore.loadRounds();
     }
 
-    render() {
+    public render(): any {
         const appStore = this.props.appStore;
 
         return (
@@ -30,10 +30,10 @@ export class MatchesListComponent extends React.Component {
                     {appStore.rounds.map((round) => {
                         return (
                             <RoundComponent round={round} appStore={appStore}></RoundComponent>
-                        )
+                        );
                     })}
                 </ul>
             </InfiniteScroll>
-        )
+        );
     }
 }

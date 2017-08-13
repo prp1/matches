@@ -5,7 +5,7 @@
   "scripts": {
     "cleaninstall": "rm -rf ./node_modules && npm cache clean && npm install",
     "dev": "node server/index.js",
-    "lint": "npm run tslint \"src/**/*.ts\"",
+    "lint": "npm run tslint \"src/**/*.ts\" \"src/**/*.tsx\"",
     "tslint": "tslint"
   },
   "author": "prp1",

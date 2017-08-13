@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { observer } from "mobx-react";
-import { MatchComponentProps } from "./match.interfaces";
-import { FavoriteComponent } from "../favorite/favorite.component";
-import { matchesService } from "../shared/matches.service";
-const InfiniteScroll = require("react-infinite-scroller");
+import * as React from 'react';
+import { observer } from 'mobx-react';
+import { MatchComponentProps } from './match.interfaces';
+import { FavoriteComponent } from '../favorite/favorite.component';
+import { matchesService } from '../shared/matches.service';
+const InfiniteScroll = require('react-infinite-scroller');
 const styles = require('./match.styles.scss');
 
 export const MatchComponent = observer((props: MatchComponentProps) => {
@@ -22,6 +22,6 @@ export const MatchComponent = observer((props: MatchComponentProps) => {
                 <FavoriteComponent appStore={appStore} match={match}></FavoriteComponent>
             </div>
         </li>
-    )
+);
 
 });

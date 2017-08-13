@@ -29,7 +29,12 @@ export class MatchesListComponent extends React.Component {
                 <ul>
                     {appStore.rounds.map((round) => {
                         return (
-                            <RoundComponent round={round} appStore={appStore}></RoundComponent>
+                            <RoundComponent
+                                round={round}
+                                appStore={appStore}
+                                key={round.name}
+                            >
+                            </RoundComponent>
                         );
                     })}
                 </ul>

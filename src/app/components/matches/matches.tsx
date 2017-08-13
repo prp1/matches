@@ -28,41 +28,36 @@ export class Matches extends React.Component {
         const appStore = this.props.appStore;
 
         return (
-            <div>
-                <h1 className={styles.leagueTitle}>{appStore.league}</h1>
-
-                <InfiniteScroll
-                    loadMore={this.loadMoreRounds}
-                    hasMore={appStore.hasMoreRounds}
-                    loader={<div>Loading...</div>}
-                >
-                    <ul>
-                        {appStore.rounds.map((round) => {
-                            return (
-                                <li className={styles.round} key={round.name}>
-                                    <h2 className={styles.roundTitle}>{round.name}</h2>
-                                    <ul>
-                                        {round.matches.map((match) => {
-                                            return (
-                                                <li className={styles.match} key={getMatchKey(match)}>
-                                                    <div className={styles.left}>
-                                                        {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br />
-                                                        <div className={styles.info}>{match.date}</div>
-                                                    </div>
-                                                    <div className={styles.right}>
-                                                        <Favorite appStore={appStore} match={match}></Favorite>
-                                                    </div>
-                                                </li>
-                                            )
-                                        })}
-                                    </ul>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </InfiniteScroll>
-
-            </div>
+            <InfiniteScroll
+                loadMore={this.loadMoreRounds}
+                hasMore={appStore.hasMoreRounds}
+                loader={<div>Loading...</div>}
+            >
+                <ul>
+                    {appStore.rounds.map((round) => {
+                        return (
+                            <li key={round.name}>
+                                <h2 className={styles.roundTitle}>{round.name}</h2>
+                                <ul className={styles.round}>
+                                    {round.matches.map((match) => {
+                                        return (
+                                            <li className={styles.match} key={getMatchKey(match)}>
+                                                <div className={styles.left}>
+                                                    {match.team1.name} {match.score1} : {match.score2} {match.team2.name} <br />
+                                                    <div className={styles.info}>{match.date}</div>
+                                                </div>
+                                                <div className={styles.right}>
+                                                    <Favorite appStore={appStore} match={match}></Favorite>
+                                                </div>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </InfiniteScroll>
         )
     }
 }

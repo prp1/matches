@@ -2,13 +2,8 @@
 
 $item-margin: 20px;
 
-.leagueTitle {
-    font-size: 20px;
-    margin: 0 0 10px 0;
-}
-
 .round {
-    padding: 20px;
+    padding: 5px 20px;
     background: $body-bg-alternate;
     margin-bottom: 20px;
 }
@@ -22,7 +17,7 @@ $item-margin: 20px;
 .match {
     // width: 300px;
     display: block;
-    padding: 5px 0;
+    padding: 10px 0;
     border-top: 1px solid #131417;
     border-bottom: 1px solid #303033;
     overflow: hidden;

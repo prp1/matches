@@ -13,9 +13,13 @@ export const AppComponent = observer(() => {
         <div>
             <NavComponent title={appStore.league}></NavComponent>
             <div className={styles.container}>
-                <MatchesFiltersComponent appStore={appStore} />
-                <MatchesListComponent appStore={appStore} />
+                <div className={styles.sidebar}>
+                    <MatchesFiltersComponent appStore={appStore} />
+                </div>
+                <div className={styles.content}>
+                    <MatchesListComponent appStore={appStore} />
+                </div>
             </div>
         </div>
-);
+    );
 });

@@ -39,10 +39,11 @@ export class MatchesFiltersComponent extends React.Component {
                         <label className={styles.teamLabel} key={team.key}>
                             <input
                                 type="checkbox"
+                                className={styles.teamLabelCheckbox}
                                 value={team.key}
                                 onChange={handleChange}
-
                             />
+                            <span className={styles.teamLabelTitle}></span>
                             {team.name}
                         </label>
                     );

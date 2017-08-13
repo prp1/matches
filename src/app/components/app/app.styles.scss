@@ -1,7 +1,10 @@
-:global(.body) {
+:global(*) {
     margin: 0;
-    background: #000;
     box-sizing: border-box;
+}
+
+:global(.body) {
+    background: #000;
     color: #fff;
     font-family: Open Sans,sans-serif;
 }
@@ -16,4 +19,16 @@
     padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
+    overflow: hidden;
+}
+
+.sidebar {
+    float: left;
+    width: 250px;
+    background: #222326;
+    padding: 20px;
+}
+
+.content {
+    padding-left: 270px;
 }

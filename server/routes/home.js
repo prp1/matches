@@ -3,7 +3,6 @@ const browseRouter = express.Router();
 const cachedData = require('../data/matches.json');
 cachedData.rounds.reverse();
 
-
 const getNormalizedMatches = (rounds) => {
     let normalizedData = [];
 
@@ -18,7 +17,6 @@ const getNormalizedMatches = (rounds) => {
 };
 
 const cachedMatches = getNormalizedMatches(cachedData.rounds);
-
 
 const getMatches = (payload) => {
     const offset = Number.parseInt(payload.offset) || 0;

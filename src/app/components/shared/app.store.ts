@@ -3,7 +3,6 @@ import { apiService } from './api.service';
 import { GetMatchesApiResponseModel } from '../matches/shared/matches.interfaces';
 import { Match, Team, GetTeamsApiResponseModel } from './../matches/shared/matches.interfaces';
 import { observable, computed, action, useStrict } from 'mobx';
-import 'whatwg-fetch';
 const Promise = require('promise-polyfill');
 
 useStrict(true);

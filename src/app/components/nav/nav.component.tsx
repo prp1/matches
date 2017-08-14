@@ -9,6 +9,6 @@ export const NavComponent = observer((props: NavComponentProps) => {
         <nav className={styles.nav}>
             <div className={styles.title}>{props.title}</div>
         </nav>
-);
+    );
 
 });

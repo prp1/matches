@@ -2,6 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { MatchesFiltersComponentProps } from './matches-filters.interfaces';
 import { Team } from '../shared/matches.interfaces';
+import { scrollService } from '../../shared/scroll.service';
 const styles = require('./matches-filters.styles');
 
 @observer
@@ -20,7 +21,7 @@ export class MatchesFiltersComponent extends React.Component {
             return appStore.teamsFilter.indexOf(team.key) > -1;
         };
 
-        const handleChange = (e: any): void => {
+        const handleFilterChange = (e: any): void => {
             const teamKey = e.target.value;
 
             if (e.target.checked) {
@@ -29,7 +30,10 @@ export class MatchesFiltersComponent extends React.Component {
                 appStore.removeTeamFromFilter(teamKey);
             }
 
-            appStore.loadMatches(true);
+            appStore.loadMatches(true)
+                .then(() => {
+                    scrollService.scrollToTop(500);
+                });
         };
 
         return (
@@ -41,7 +45,7 @@ export class MatchesFiltersComponent extends React.Component {
                                 type="checkbox"
                                 className={styles.teamLabelCheckbox}
                                 value={team.key}
-                                onChange={handleChange}
+                                onChange={handleFilterChange}
                             />
                             <span className={styles.teamLabelTitle}></span>
                             {team.name}

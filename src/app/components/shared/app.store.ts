@@ -3,6 +3,8 @@ import { apiService } from './api.service';
 import { GetMatchesApiResponseModel } from '../matches/shared/matches.interfaces';
 import { Match, Team, GetTeamsApiResponseModel } from './../matches/shared/matches.interfaces';
 import { observable, computed, action, useStrict } from 'mobx';
+import 'whatwg-fetch';
+const Promise = require('promise-polyfill');
 
 useStrict(true);
 
@@ -77,30 +79,34 @@ export class AppStore {
     }
 
     @action
-    public loadMatches(shouldResetOffset: boolean): void {
-        if (shouldResetOffset) {
-            this._matchesOffset = 0;
-        }
+    public loadMatches(shouldResetOffset: boolean): Promise<void> {
+        return new Promise((resolve: any) => {
+            if (shouldResetOffset) {
+                this._matchesOffset = 0;
+            }
 
-        const limit = 30;
-        const offset = this._matchesOffset;
-        let url = `/matches?offset=${offset}&limit=${limit}`;
+            const limit = 30;
+            const offset = this._matchesOffset;
+            let url = `/matches?offset=${offset}&limit=${limit}`;
 
-        if (this._teamsFilter.length) {
-            url += `&teams=${this._teamsFilter.join(',')}`;
-        }
+            if (this._teamsFilter.length) {
+                url += `&teams=${this._teamsFilter.join(',')}`;
+            }
 
-        apiService.get(url)
-            .then(action((data: GetMatchesApiResponseModel) => {
-                if (shouldResetOffset) {
-                    this._matches = [];
-                }
+            apiService.get(url)
+                .then(action((data: GetMatchesApiResponseModel) => {
+                    if (shouldResetOffset) {
+                        this._matches = [];
+                    }
 
-                this._matches = this._matches.concat(data.matches);
-                this._league = data.name;
-                this._matchesOffset += limit;
-                this._hasMoreMatches = this._matchesOffset < data.totalCount;
-            }));
+                    this._matches = this._matches.concat(data.matches);
+                    this._league = data.name;
+                    this._matchesOffset += limit;
+                    this._hasMoreMatches = this._matchesOffset < data.totalCount;
+
+                    resolve();
+                }));
+            });
     }
 
     @action
@@ -121,7 +127,6 @@ export class AppStore {
     @action
     public addTeamToFilter(teamKey: string): void {
         this._teamsFilter.push(teamKey);
-
     }
 
     @action
